@@ -235,7 +235,7 @@ button:disabled{opacity:.55;cursor:default}
 </nav>
 <div class="sidebar-page" id="page-plants" role="tabpanel" aria-labelledby="tab-plants" data-sidebar-page="plants">
 <section><div class="section-head"><h2>Ritverktyg</h2></div><div class="tool-grid"><button data-tool="select" class="tool active"><b>↖</b><small>Markera</small></button><button data-tool="bed" class="tool"><b>⬡</b><small>Planteringsyta</small></button><button data-tool="path" class="tool"><b>⌁</b><small>Gång</small></button><button data-tool="plant" class="tool"><b>✿</b><small>Placera växt</small></button></div><button id="moveModeBtn" class="full secondary" aria-pressed="false" title="Kortkommando M">↔ Flyttläge <span class="micro">(M)</span></button><button id="bedSelectModeBtn" class="full secondary bed-selection-mode-toggle" aria-pressed="false" title="Dra en ruta runt rabattceller du vill gruppera">⬡ Markera flera rabatter</button><p class="micro" id="toolHint">Markera en grupp eller ett objekt i ritningen.</p><button id="finishPolygon" class="full hidden">Avsluta planteringsyta</button></section>
-<section><div class="section-head"><h2>Växtbibliotek</h2><span id="plantCount" class="pill">–</span></div><input id="plantSearch" class="search" placeholder="Sök art eller släkte…"><select id="categoryFilter"><option value="Alla">Alla arter</option><option>Perenner</option><option>Prydnadsgräs</option><option>Buskar</option><option>Träd</option><option>Barrträd</option><option>Marktäckare</option><option>Lökväxter</option><option>Kryddväxter</option></select><label class="catalog-hardiness-label">Övervintringsklass<select id="winteringFilter"><option value="any">Alla klasser</option><option value="A">A · pålitlig</option><option value="B">B · vanligtvis</option><option value="C">C · ibland</option><option value="D">D · övervintrar inte</option><option value="unknown">Ej klassad / tillämplig uppgift saknas</option></select></label><p class="micro">A–D visar svensk övervintringschans för perenner; det är inte en geografisk zon.</p><p id="plantBedFilterNotice" class="micro hidden" role="status"></p><div id="plantList" class="plant-list"></div><p id="catalogReviewSummary" class="micro"></p><details class="plant-source-method"><summary>Om källstatusen</summary><p class="micro">A–D är Perennagruppens sannolikhetsklasser för perenner, inte geografiska zoner. Stjärna betyder att väldränerat läge krävs. RHS H-klasser är ett separat brittiskt system.</p><a href="https://perenner.se/overvintringsbokstaver-for-perenner/" target="_blank" rel="noopener noreferrer">Perennagruppen · A–D</a><a href="https://www.rhs.org.uk/advice/rhs-hardiness-rating" target="_blank" rel="noopener noreferrer">RHS · H-klasser</a></details><p class="micro">Dra en art från listan direkt till planen för att placera ett fristående träd, en buske eller en enskild växt. Arterna fördelas mellan vaxkrita, vått-i-vått-akvarell och transparent akvarell; växtfärgerna behålls. För växter i en rabatt väljer du Placera växt och klickar i rabatten.</p></section>
+<section><div class="section-head"><h2>Växtbibliotek</h2><span id="plantCount" class="pill">–</span></div><input id="plantSearch" class="search" placeholder="Sök art eller släkte…"><select id="categoryFilter"><option value="Alla">Alla arter</option><option>Perenner</option><option>Prydnadsgräs</option><option>Buskar</option><option>Rosor</option><option>Träd</option><option>Barrträd</option><option>Marktäckare</option><option>Lökväxter</option><option>Kryddväxter</option></select><label class="catalog-hardiness-label">Övervintringsklass<select id="winteringFilter"><option value="any">Alla klasser</option><option value="A">A · pålitlig</option><option value="B">B · vanligtvis</option><option value="C">C · ibland</option><option value="D">D · övervintrar inte</option><option value="unknown">Ej klassad / tillämplig uppgift saknas</option></select></label><p class="micro">A–D visar svensk övervintringschans för perenner; det är inte en geografisk zon.</p><p id="plantBedFilterNotice" class="micro hidden" role="status"></p><div id="plantList" class="plant-list"></div><p id="catalogReviewSummary" class="micro"></p><details class="plant-source-method"><summary>Om källstatusen</summary><p class="micro">A–D är Perennagruppens sannolikhetsklasser för perenner, inte geografiska zoner. Stjärna betyder att väldränerat läge krävs. RHS H-klasser är ett separat brittiskt system.</p><a href="https://perenner.se/overvintringsbokstaver-for-perenner/" target="_blank" rel="noopener noreferrer">Perennagruppen · A–D</a><a href="https://www.rhs.org.uk/advice/rhs-hardiness-rating" target="_blank" rel="noopener noreferrer">RHS · H-klasser</a></details><p class="micro">Dra en art från listan direkt till planen för att placera ett fristående träd, en buske eller en enskild växt. Arterna fördelas mellan vaxkrita, vått-i-vått-akvarell och transparent akvarell; växtfärgerna behålls. För växter i en rabatt väljer du Placera växt och klickar i rabatten.</p></section>
 </div><div class="sidebar-page" id="page-reference" role="tabpanel" aria-labelledby="tab-reference" data-sidebar-page="reference" hidden>
 <section><div class="section-head"><h2>Egen referensbild</h2></div><button id="openReference" class="full">Ladda upp referensbild</button><button id="pasteReference" class="full secondary" type="button">Klistra in bild</button><input id="referenceInput" type="file" accept="image/*" hidden><label class="check"><input id="referenceVisible" type="checkbox" checked> Visa referensbild</label><label>Referensens opacitet <output id="referenceOpacityOut">55 %</output><input id="referenceOpacity" type="range" min="10" max="100" value="55"></label><label>Uppmätt avstånd mellan två klick (m)<input id="calibrationDistance" type="number" min="0.1" step="0.1" placeholder="Ange känt avstånd"></label><button id="calibrateReference" class="full secondary">Kalibrera skala</button><button id="clearReference" class="full quiet">Ta bort referensbild</button><p class="micro">Kopiera en bild från en webbsida och välj Klistra in bild, eller tryck Ctrl+V / ⌘V medan fliken Underlag är öppen. Du kan även ladda upp en fil. Ange ett känt avstånd för att kalibrera skalan.</p></section>
 </div>
@@ -2180,7 +2180,12 @@ window.PLANT_CATALOG = [
     "springValue": "Låga, flikiga blad utvecklas i en kompakt bladmassa.",
     "summerValue": "Luftiga klasar av små vita eller rosa blommor över bladverket från sen vår till försommar.",
     "autumnValue": "Bladverket är mer eller mindre städsegrönt och kan behålla värde in på hösten.",
-    "siteCompatibility": ["sol eller halvskugga", "krita/kalk, mulljord eller sand", "väldränerat läge", "neutral jord"],
+    "siteCompatibility": [
+      "sol eller halvskugga",
+      "krita/kalk, mulljord eller sand",
+      "väldränerat läge",
+      "neutral jord"
+    ],
     "height": 0.3,
     "diameter": 0.4,
     "spacing": 35,
@@ -2197,8 +2202,14 @@ window.PLANT_CATALOG = [
     "reviewDate": "2026-11-10",
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Låg, tuvbildande och halvt städsegrön perenn med flikiga blad.",
-    "heightRange": [0.1, 0.5],
-    "diameterRange": [0.1, 0.5],
+    "heightRange": [
+      0.1,
+      0.5
+    ],
+    "diameterRange": [
+      0.1,
+      0.5
+    ],
     "flowerColor": "Små vita eller rosa blommor.",
     "foliageCharacter": "Flikiga och tandade blad, ofta håriga; arten varierar och blad kan vara gröna, röda eller purpurfärgade.",
     "soilTexture": "Krita/kalk, mulljord och sand; neutral jord enligt RHS.",
@@ -2208,7 +2219,11 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/8715/heuchera-micrantha/details",
     "sourceNote": "RHS-artprofilen bekräftar låg tuvbildande form, varierande grönt/rött/purpurfärgat bladverk, vita eller rosa blommor under sen vår/försommar, sol eller halvskugga, krita/kalk, mulljord och sand (inte lera), väldränerad neutral jord, torktålighet och storleksintervall 0,1–0,5 m. Plantavståndet 35 cm är en planeringsuppskattning inom artens publicerade utbredningsintervall, inte ett RHS-rekommenderat avstånd.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H5 avser brittiska odlingsförhållanden. Ingen svensk A–D-klass överförs från namngivna Heuchera-sorter.",
-    "compositionRole": ["foliage_mass", "matrix_edge", "repeated_drift"],
+    "compositionRole": [
+      "foliage_mass",
+      "matrix_edge",
+      "repeated_drift"
+    ],
     "rhsHardiness": "H5",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/8715/heuchera-micrantha/details"
   },
@@ -2222,7 +2237,12 @@ window.PLANT_CATALOG = [
     "springValue": "Mjukt håriga, flikiga blad bildar en låg tuva.",
     "summerValue": "Små vita eller rosa klocklika blommor i lösa klasar på tunna stjälkar under sensommaren.",
     "autumnValue": "Halvt städsegrönt bladverk kan ge viss struktur; skydda mot uttorkning.",
-    "siteCompatibility": ["skugga eller halvskugga", "krita/kalk, lera, mulljord eller sand", "fertil, neutral jord", "fuktighetshållande men väldränerad"],
+    "siteCompatibility": [
+      "skugga eller halvskugga",
+      "krita/kalk, lera, mulljord eller sand",
+      "fertil, neutral jord",
+      "fuktighetshållande men väldränerad"
+    ],
     "height": 0.4,
     "diameter": 0.45,
     "spacing": 40,
@@ -2239,8 +2259,14 @@ window.PLANT_CATALOG = [
     "reviewDate": "2026-11-10",
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Tuvbildande perenn med mjukt håriga, flikiga blad; halvt städsegrön.",
-    "heightRange": [0.1, 0.5],
-    "diameterRange": [0.1, 0.5],
+    "heightRange": [
+      0.1,
+      0.5
+    ],
+    "diameterRange": [
+      0.1,
+      0.5
+    ],
     "flowerColor": "Små vita eller rosa klocklika blommor.",
     "foliageCharacter": "Mjukt håriga, flikiga, mellangröna blad.",
     "soilTexture": "Krita/kalk, lera, mulljord och sand; fertil neutral jord rekommenderas.",
@@ -2250,7 +2276,11 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/8725/heuchera-villosa/details",
     "sourceNote": "RHS-artprofilen anger cirka 40 cm höjd, tuvbildande mjukt håriga blad, sensommarblomning med vita eller rosa små klockor, skugga/halvskugga, kalk/lera/mulljord/sand, neutral fertil jord samt fuktig men väldränerad mark. Torka bör undvikas. Perennagruppen listar H. villosa med A*. Katalogens plantavstånd 40 cm är en planeringsuppskattning från artens publicerade storleksintervall, inte ett RHS-rekommenderat avstånd.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H6 avser brittiska/nordeuropeiska förhållanden. Svensk A* kommer separat från Perennagruppens lista och kräver väldränerat läge.",
-    "compositionRole": ["foliage_mass", "shade_transition", "matrix_edge"],
+    "compositionRole": [
+      "foliage_mass",
+      "shade_transition",
+      "matrix_edge"
+    ],
     "rhsHardiness": "H6",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/8725/heuchera-villosa/details"
   },
@@ -2264,7 +2294,13 @@ window.PLANT_CATALOG = [
     "springValue": "Små röda blommor följs av röda eller gröna vingade frukter.",
     "summerValue": "Flikigt bladverk ger lätt kronstruktur; bladfärgen framträder bäst i halvskugga.",
     "autumnValue": "Bladen får ofta tydlig höstfärg innan de faller.",
-    "siteCompatibility": ["sol eller halvskugga", "krita/kalk, lera, mulljord eller sand", "fuktig men väldränerad jord", "sur till neutral jord", "skyddat läge"],
+    "siteCompatibility": [
+      "sol eller halvskugga",
+      "krita/kalk, lera, mulljord eller sand",
+      "fuktig men väldränerad jord",
+      "sur till neutral jord",
+      "skyddat läge"
+    ],
     "height": 6,
     "diameter": 6,
     "spacing": 600,
@@ -2281,8 +2317,14 @@ window.PLANT_CATALOG = [
     "reviewDate": "2026-11-10",
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtform och årstidsverkan, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Litet, lövfällande träd med rundad krona och djupt 5–7-flikiga blad.",
-    "heightRange": [4, 8],
-    "diameterRange": [4, 8],
+    "heightRange": [
+      4,
+      8
+    ],
+    "diameterRange": [
+      4,
+      8
+    ],
     "flowerColor": "Små röda vårblommor; följda av röda eller gröna vingade frukter.",
     "foliageCharacter": "Djupt handflikiga blad; ofta stark höstfärg. Färg och form varierar mellan sorter.",
     "soilTexture": "Krita/kalk, lera, mulljord och sand; sur till neutral jord.",
@@ -2292,7 +2334,11 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/225/acer-palmatum/details",
     "sourceNote": "RHS-artprofilen klassar Acer palmatum som ett variabelt litet träd, 4–8 m högt och brett, med djupt 5–7-flikiga blad, röda vårblommor och vingade frukter. Den anger sol/halvskugga, krita/lera/mulljord/sand, fuktig väldränerad sur–neutral jord och skyddat läge. Katalogens plantavstånd 600 cm är en planeringsuppskattning i intervallet från RHS-kronbredden, inte ett publicerat RHS-avstånd.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H6 avser brittiska/nordeuropeiska förhållanden. RHS anger att halvskugga ger bäst bladfärg. Svenskt A–D-system är inte tillämpligt på trädet.",
-    "compositionRole": ["specimen", "structure", "canopy"],
+    "compositionRole": [
+      "specimen",
+      "structure",
+      "canopy"
+    ],
     "rhsHardiness": "H6",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/225/acer-palmatum/details"
   },
@@ -2306,7 +2352,12 @@ window.PLANT_CATALOG = [
     "springValue": "Purpurfärgat bladverk kommer på upprätta stjälkar.",
     "summerValue": "Gula nickande stjärnblommor sitter i bladvecken; blomning under sommaren.",
     "autumnValue": "Bladverket kan ge purpurfärg in på hösten innan det vissnar ned.",
-    "siteCompatibility": ["sol eller halvskugga", "krita/kalk, lera, mulljord eller sand", "fuktig jord; tål även sämre dränering", "skyddat läge"],
+    "siteCompatibility": [
+      "sol eller halvskugga",
+      "krita/kalk, lera, mulljord eller sand",
+      "fuktig jord; tål även sämre dränering",
+      "skyddat läge"
+    ],
     "height": 0.7,
     "diameter": 0.45,
     "spacing": 40,
@@ -2323,8 +2374,14 @@ window.PLANT_CATALOG = [
     "reviewDate": "2026-11-10",
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Upprättväxande örtartad perenn med kransställda, purpurfärgade lansettlika blad.",
-    "heightRange": [0.5, 1],
-    "diameterRange": [0.1, 0.5],
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameterRange": [
+      0.1,
+      0.5
+    ],
     "flowerColor": "Gula, nickande stjärnformade blommor.",
     "foliageCharacter": "Purpurfärgade, lansettlika blad i kransar längs stjälken.",
     "soilTexture": "Krita/kalk, lera, mulljord och sand; RHS anger att arten tolererar surt, neutralt och basiskt pH.",
@@ -2334,7 +2391,11 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/60229/lysimachia-ciliata-firecracker/details",
     "sourceNote": "RHS-profilen bekräftar sortnamnet 'Firecracker', upprätt perenn till 1 m, purpurfärgade kransställda blad och gula nickande stjärnblommor; sol/halvskugga, krita/lera/mulljord/sand, fuktig–sämre dränerad jord, pH surt–alkaliskt, höjd 0,5–1 m och bredd 0,1–0,5 m. Plantavståndet 40 cm är en planeringsuppskattning inom det publicerade utbredningsintervallet, inte ett publicerat RHS-avstånd. Svensk A–D lämnas tomt: Perennagruppens lista stavar sorten 'Firekracker' och identiteten kan inte fastställas enbart från RHS-profilen.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H6 avser brittiska/nordeuropeiska förhållanden. Svensk A-klass har inte överförts från den snarlikt stavade posten 'Firekracker' i Perennagruppens lista.",
-    "compositionRole": ["repeated_drift", "summer_colour_mass", "foliage_mass"],
+    "compositionRole": [
+      "repeated_drift",
+      "summer_colour_mass",
+      "foliage_mass"
+    ],
     "rhsHardiness": "H6",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/60229/lysimachia-ciliata-firecracker/details"
   },
@@ -2348,7 +2409,12 @@ window.PLANT_CATALOG = [
     "springValue": "Upprätta stjälkar och smala blad utvecklas från marken.",
     "summerValue": "Lång blomningsperiod med täta ax av purpurrosa blommor.",
     "autumnValue": "Blomställningar kan ge struktur; ta bort om självsådd inte önskas.",
-    "siteCompatibility": ["full sol", "fuktighetshållande till blöt jord", "lera eller mulljord", "fungerar även på dåligt dränerad mark"],
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande till blöt jord",
+      "lera eller mulljord",
+      "fungerar även på dåligt dränerad mark"
+    ],
     "height": 1.2,
     "diameter": 0.5,
     "spacing": 45,
@@ -2365,8 +2431,14 @@ window.PLANT_CATALOG = [
     "reviewDate": "2026-11-10",
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Robust, tuvbildande örtartad perenn med upprätta stjälkar.",
-    "heightRange": [1, 1.5],
-    "diameterRange": [0.1, 0.5],
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameterRange": [
+      0.1,
+      0.5
+    ],
     "flowerColor": "Purpurrosa blommor i täta, upprätta ax.",
     "foliageCharacter": "Smala, pilformade blad längs upprätta stjälkar.",
     "soilTexture": "Lera och mulljord; alla pH-värden enligt RHS.",
@@ -2376,10 +2448,16 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/10645/lythrum-salicaria/details",
     "sourceNote": "RHS anger en robust, tuvbildande örtartad perenn med stjälkar till cirka 1,2 m, 1–1,5 m hög och 0,1–0,5 m bred. Den har smala blad och purpurrosa ax under sommaren; full sol, lera/mulljord och pålitligt fuktig eller dåligt dränerad jord. Plantavståndet 45 cm är ett planeringsvärde inom RHS utbredningsintervall, inte ett RHS-rekommenderat avstånd. A–D lämnas tomt eftersom den svenska listan bara anger namngivna sorter.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H7 avser brittiska/europeiska förhållanden. Svensk A–D-klass för örtartade perenner visas bara när exakt art eller sort stöds av Perennagruppens lista.",
-    "compositionRole": ["primary", "summer_colour_mass", "pollinator_accent"],
+    "compositionRole": [
+      "primary",
+      "summer_colour_mass",
+      "pollinator_accent"
+    ],
     "rhsHardiness": "H7",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/10645/lythrum-salicaria/details",
-    "synonyms": ["Lythrum salicaria var. gracile"]
+    "synonyms": [
+      "Lythrum salicaria var. gracile"
+    ]
   },
   {
     "id": "p045",
@@ -2570,7 +2648,12 @@ window.PLANT_CATALOG = [
     "springValue": "Mjukt håriga blad bildar en låg rosett före blomningen.",
     "summerValue": "Höga, ensidiga spiror med hängande, rörformiga purpurrosa blommor med prickig insida.",
     "autumnValue": "Fröställningar kan ge struktur och självså nya plantor; klipp bort om fröspridning inte önskas.",
-    "siteCompatibility": ["sol eller halvskugga", "krita/kalk, lera, mulljord eller sand", "mullrik jord", "fuktig men väldränerad; undvik extremt blött eller torrt"],
+    "siteCompatibility": [
+      "sol eller halvskugga",
+      "krita/kalk, lera, mulljord eller sand",
+      "mullrik jord",
+      "fuktig men väldränerad; undvik extremt blött eller torrt"
+    ],
     "height": 2,
     "diameter": 0.45,
     "spacing": 40,
@@ -2588,8 +2671,14 @@ window.PLANT_CATALOG = [
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Tvåårig eller kortlivad perenn som bildar bladrosett och höga, ensidiga blomspiror.",
     "lifeCycle": "Tvåårig eller kortlivad perenn; kan självså sig.",
-    "heightRange": [1.5, 2.5],
-    "diameterRange": [0.1, 0.5],
+    "heightRange": [
+      1.5,
+      2.5
+    ],
+    "diameterRange": [
+      0.1,
+      0.5
+    ],
     "flowerColor": "Purpurrosa, rörformiga blommor med mörkprickig insida.",
     "foliageCharacter": "Mjukluden, oval bladrosett; stjälkbladen sitter växelvis längs stängeln.",
     "soilTexture": "Krita/kalk, lera, mulljord och sand; pH-värden surt till basiskt.",
@@ -2599,7 +2688,11 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/5862/digitalis-purpurea/details",
     "sourceNote": "RHS beskriver Digitalis purpurea som tvåårig eller kortlivad perenn, 1,5–2,5 m hög och 0,1–0,5 m bred, med mjukt hårig bladrosett och ensidiga spiror av purpurrosa, prickiga klockor under sommaren. Den växer i sol/halvskugga, flera jordtyper och fuktig men väldränerad eller väldränerad jord. Plantavståndet 40 cm är ett planeringsvärde inom publicerat utbredningsintervall. RHS markerar växten som giftig vid förtäring; svenska A–D lämnas tomt eftersom 2021-listan endast anger namngivna sorter.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H7 avser brittiska/europeiska förhållanden. RHS anger både ettåriga och tvååriga leveransformer i handel, men den botaniska profilen beskriver arten som huvudsakligen tvåårig eller kortlivad perenn. Ingen svensk A–D-klass överförs från namngivna sorter.",
-    "compositionRole": ["vertical_accent", "repeated_drift", "early_summer"],
+    "compositionRole": [
+      "vertical_accent",
+      "repeated_drift",
+      "early_summer"
+    ],
     "rhsHardiness": "H7",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/5862/digitalis-purpurea/details",
     "handlingNote": "Giftig vid förtäring. RHS anger att den är giftig för husdjur och rekommenderar handskar/skyddsutrustning vid hantering.",
@@ -2615,7 +2708,12 @@ window.PLANT_CATALOG = [
     "springValue": "Runda, flikiga blad bildar en låg basrosett och stjälkblad.",
     "summerValue": "Långa upprätta spiror av stora öppna, trattlika blommor i varierande färger.",
     "autumnValue": "Lövverket vissnar efter blomningen; kortlivad livscykel innebär att återväxt från frö kan behövas.",
-    "siteCompatibility": ["full sol", "krita/kalk, mulljord eller sand", "väldränerad, måttligt bördig jord", "vindskydd eller stöd på utsatt plats"],
+    "siteCompatibility": [
+      "full sol",
+      "krita/kalk, mulljord eller sand",
+      "väldränerad, måttligt bördig jord",
+      "vindskydd eller stöd på utsatt plats"
+    ],
     "height": 2,
     "diameter": 0.75,
     "spacing": 75,
@@ -2633,8 +2731,14 @@ window.PLANT_CATALOG = [
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Tvåårig eller kortlivad perenn med upprätta blomspiror.",
     "lifeCycle": "Tvåårig eller kortlivad perenn.",
-    "heightRange": [1.5, 2.5],
-    "diameterRange": [0.5, 1],
+    "heightRange": [
+      1.5,
+      2.5
+    ],
+    "diameterRange": [
+      0.5,
+      1
+    ],
     "flowerColor": "Rosa, purpur, röd, vit eller gul; sortberoende.",
     "foliageCharacter": "Rundade, grundflikiga eller djupt handflikiga blad.",
     "soilTexture": "Krita/kalk, mulljord och sand; pH surt till basiskt.",
@@ -2644,10 +2748,16 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/57087/alcea-rosea/details",
     "sourceNote": "RHS anger en robust tvåårig eller kortlivad perenn som blir 1,5–2,5 m hög och 0,5–1 m bred, med upprätta spiror och stora trattlika blommor i flera färger under sommaren. Den kräver full sol och väldränerad, måttligt bördig jord av krita/kalk, mulljord eller sand. Plantavståndet 75 cm är ett planeringsvärde mitt i publicerat utbredningsintervall. Perennagruppen listar endast namngivna sorter med C*, så ingen klass överförs till artposten.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H5 avser brittiska förhållanden. A–D-värden från namngivna Alcea-sorter överförs inte till den ospecificerade artposten.",
-    "compositionRole": ["vertical_accent", "summer_colour_mass", "repeated_drift"],
+    "compositionRole": [
+      "vertical_accent",
+      "summer_colour_mass",
+      "repeated_drift"
+    ],
     "rhsHardiness": "H5",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/57087/alcea-rosea/details",
-    "synonyms": ["Althaea rosea"]
+    "synonyms": [
+      "Althaea rosea"
+    ]
   },
   {
     "id": "p051",
@@ -2659,7 +2769,13 @@ window.PLANT_CATALOG = [
     "springValue": "Stora, mörkgröna, delade blad vecklas ut tidigt på säsongen.",
     "summerValue": "Doftande vita eller ljusrosa, stora skålformade blommor under försommaren.",
     "autumnValue": "Bladverket vissnar; långlivad planta bör lämnas ostörd.",
-    "siteCompatibility": ["sol eller halvskugga", "djup, bördig och mullrik jord", "lera, mulljord eller sand", "fuktig men väldränerad", "skyddat läge"],
+    "siteCompatibility": [
+      "sol eller halvskugga",
+      "djup, bördig och mullrik jord",
+      "lera, mulljord eller sand",
+      "fuktig men väldränerad",
+      "skyddat läge"
+    ],
     "height": 0.75,
     "diameter": 0.75,
     "spacing": 80,
@@ -2677,8 +2793,14 @@ window.PLANT_CATALOG = [
     "compositionRoleBasis": "Rollerna är designheuristik utifrån växtsätt och säsong, inte en botanisk kompatibilitetsgaranti.",
     "habit": "Långlivad, tuvbildande örtartad perenn.",
     "lifeCycle": "Långlivad örtartad perenn; ogillar omplantering.",
-    "heightRange": [0.5, 1],
-    "diameterRange": [0.5, 1],
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameterRange": [
+      0.5,
+      1
+    ],
     "flowerColor": "Doftande vit eller blekt rosa med gula ståndare.",
     "foliageCharacter": "Stora, mörkgröna blad med nio småblad.",
     "soilTexture": "Lera, mulljord och sand; helst djup, bördig och humusrik jord; pH surt till basiskt.",
@@ -2688,12 +2810,21 @@ window.PLANT_CATALOG = [
     "verifiedSource": "https://www.rhs.org.uk/plants/12123/paeonia-lactiflora/details",
     "sourceNote": "RHS anger en tuvbildande örtartad perenn till cirka 60 cm i beskrivningen, medan storlekstabellen anger intervallen 0,5–1 m för höjd och bredd. Katalogen behåller tabellens bredare intervall och 75 cm som ritningsvärde. Växten har stora mörkgröna delade blad och doftande vita/blekrosa blommor tidigt på sommaren; sol/halvskugga, lera/mulljord/sand, fuktig väldränerad och skyddad växtplats. Plantavståndet 80 cm är ett planeringsvärde inom publicerad bredd. A–D lämnas tomt eftersom listan anger namngivna sorter men inte artposten.",
     "sourceRegionNote": "RHS-odlingsuppgifter och H6 avser brittiska/nordeuropeiska förhållanden. RHS varnar för hudirritation hos hund och katt. Svensk A-klass visas inte utan exakt artpost.",
-    "compositionRole": ["primary", "summer_colour_mass", "repeated_drift"],
+    "compositionRole": [
+      "primary",
+      "summer_colour_mass",
+      "repeated_drift"
+    ],
     "rhsHardiness": "H6",
     "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/12123/paeonia-lactiflora/details",
     "handlingNote": "RHS anger att pionen kan vara hudirriterande för hundar och katter.",
     "toxicitySourceUrl": "https://www.rhs.org.uk/plants/12123/paeonia-lactiflora/details",
-    "synonyms": ["Paeonia albiflora", "Paeonia lactiflora var. sinensis", "Paeonia lactiflora var. trichocarpa", "Paeonia sinensis"]
+    "synonyms": [
+      "Paeonia albiflora",
+      "Paeonia lactiflora var. sinensis",
+      "Paeonia lactiflora var. trichocarpa",
+      "Paeonia sinensis"
+    ]
   },
   {
     "id": "p052",
@@ -4900,24 +5031,55 @@ window.PLANT_CATALOG = [
   },
   {
     "id": "p136",
-    "name": "Klätterros",
-    "latin": "Rosa (klätterros-gruppen)",
-    "category": "Klätterväxter",
-    "compositionReview": "ej_granskad",
-    "winterStructure": null,
-    "springValue": null,
-    "summerValue": null,
-    "autumnValue": null,
-    "siteCompatibility": null,
-    "height": 3,
-    "diameter": 1.5,
-    "spacing": 150,
-    "light": "Sol",
-    "bloom": "Jun–sep",
-    "color": "#6d9275",
-    "dataConfidence": "saknar_artvis_verifiering",
+    "name": "Klätterros 'New Dawn'",
+    "latin": "Rosa 'New Dawn'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Blek blushrosa, halvdubbel och doftande; Fri blomning från tidig sommar till sen höst eller längre",
+    "autumnValue": "Fri blomning från tidig sommar till sen höst eller längre; RHS beskriver den som lämplig för norrvägg.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "fertil",
+      "humusrik",
+      "tål viss skugga och norrvägg"
+    ],
+    "height": 3.0,
+    "heightRange": [
+      1.5,
+      3.0
+    ],
+    "diameter": 2.0,
+    "diameterRange": [
+      1.5,
+      2.5
+    ],
+    "spacing": 200,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "blek blushrosa, halvdubbel och doftande",
+    "foliageCharacter": "mörkgrönt, blankt bladverk",
+    "habit": "kraftig klätterros, cirka 3 m; kan användas mot vägg eller pergola",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/96212/rosa-new-dawn-cl/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Fri blomning från tidig sommar till sen höst eller längre; RHS beskriver den som lämplig för norrvägg. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
     "winteringRating": null,
-    "winteringRatingScope": null
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H7",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/96212/rosa-new-dawn-cl/details"
   },
   {
     "id": "p137",
@@ -6355,6 +6517,1072 @@ window.PLANT_CATALOG = [
     "winteringRatingNote": "Klass D i Perennagruppens lista: växten övervintrar normalt inte i Sverige. Behandla som säsongsväxt eller ordna frostfri övervintring.",
     "winteringRatingReviewed": "2026-11-09",
     "spreadRisk": "low"
+  },
+  {
+    "id": "pr002",
+    "name": "Ros 'Gertrude Jekyll'",
+    "latin": "Rosa 'Ausbord'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Klart lysande rosa, tätt fylld och starkt doftande; Nästan kontinuerlig blomning från tidig sommar till första höstfrosten.",
+    "autumnValue": "Nästan kontinuerlig blomning från tidig sommar till första höstfrosten.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.2,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "klart lysande rosa, tätt fylld och starkt doftande",
+    "foliageCharacter": "friskt grågrönt bladverk",
+    "habit": "buskros; kan tränas som kort klätterros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/225131/rosa-gertrude-jekyll/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Nästan kontinuerlig blomning från tidig sommar till första höstfrosten. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/225131/rosa-gertrude-jekyll/details"
+  },
+  {
+    "id": "pr003",
+    "name": "Ros 'Olivia Rose Austin'",
+    "latin": "Rosa 'Ausmixture'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Mellanrosa, fylld och doftande, grund skålformad/rosettformad; Återblommar från tidig sommar till sen höst.",
+    "autumnValue": "Återblommar från tidig sommar till sen höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.0,
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "mellanrosa, fylld och doftande, grund skålformad/rosettformad",
+    "foliageCharacter": "blankt, friskt bladverk",
+    "habit": "kompakt buskros, återblommande",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/341442/rosa-olivia-rose-austin-ausmixture-s/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar från tidig sommar till sen höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/341442/rosa-olivia-rose-austin-ausmixture-s/details"
+  },
+  {
+    "id": "pr004",
+    "name": "Ros 'Lady of Shalott'",
+    "latin": "Rosa 'Ausnyson'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Aprikoshelhet; laxrosa ovansida och gyllengul undersida; Fyllda, lätt doftande blommor under sommaren och tidig höst.",
+    "autumnValue": "Fyllda, lätt doftande blommor under sommaren och tidig höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.2,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–sep",
+    "color": "#b98291",
+    "flowerColor": "aprikoshelhet; laxrosa ovansida och gyllengul undersida",
+    "foliageCharacter": "bladverk enligt sortprofil, buskigt växtsätt",
+    "habit": "bågformig buskros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/284465/rosa-ausnyson/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Fyllda, lätt doftande blommor under sommaren och tidig höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/284465/rosa-ausnyson/details"
+  },
+  {
+    "id": "pr005",
+    "name": "Ros 'Boscobel'",
+    "latin": "Rosa 'Auscousin'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Korallrosa med orange ton, fylld och doftande; Blommar från tidig sommar till höstfrosten.",
+    "autumnValue": "Blommar från tidig sommar till höstfrosten.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "måttligt fuktig",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.2,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "korallrosa med orange ton, fylld och doftande",
+    "foliageCharacter": "blankt mörkgrönt bladverk",
+    "habit": "upprätt buskros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/311388/rosa-boscobel-auscousin-s/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar från tidig sommar till höstfrosten. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/311388/rosa-boscobel-auscousin-s/details"
+  },
+  {
+    "id": "pr006",
+    "name": "Ros 'Graham Thomas'",
+    "latin": "Rosa 'Ausmas'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Rent rikgul, fylld och skålformad; lätt doftande; Riklig blomning från tidig sommar till sen höst.",
+    "autumnValue": "Riklig blomning från tidig sommar till sen höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.2,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 1.2,
+    "diameterRange": [
+      1,
+      1.5
+    ],
+    "spacing": 120,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "rent rikgul, fylld och skålformad; lätt doftande",
+    "foliageCharacter": "friskt, slätt grönt bladverk",
+    "habit": "kraftig, upprätt buskros; kan tränas som kort klätterros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/90507/rosa-graham-thomas-ausmas-s/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Riklig blomning från tidig sommar till sen höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/90507/rosa-graham-thomas-ausmas-s/details"
+  },
+  {
+    "id": "pr007",
+    "name": "Ros 'Golden Celebration'",
+    "latin": "Rosa 'Ausgold'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Rikgul, stor, fylld och starkt doftande; Återblommar genom sommar och höst.",
+    "autumnValue": "Återblommar genom sommar och höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.2,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "rikgul, stor, fylld och starkt doftande",
+    "foliageCharacter": "friskt, blankt mörkgrönt bladverk",
+    "habit": "rundad buskros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/90821/rosa-golden-celebration-ausgold-s/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar genom sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/90821/rosa-golden-celebration-ausgold-s/details"
+  },
+  {
+    "id": "pr008",
+    "name": "Ros 'Munstead Wood'",
+    "latin": "Rosa 'Ausbernard'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Djupt svartvinbärstonad purpurröd, doftande; mörknar från röda knoppar; Blommar från sommar till höst.",
+    "autumnValue": "Blommar från sommar till höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 1.0,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "djupt svartvinbärstonad purpurröd, doftande; mörknar från röda knoppar",
+    "foliageCharacter": "bladverk enligt sortprofil, kompakt buskform",
+    "habit": "liten, bred buskros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/258239/rosa-munstead-wood-ausbernard-pbr-s/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar från sommar till höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/258239/rosa-munstead-wood-ausbernard-pbr-s/details"
+  },
+  {
+    "id": "pr009",
+    "name": "Ros 'Iceberg'",
+    "latin": "Rosa 'Korbin'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Vit, dubbel, lätt doftande; blommor i klasar; Blommar under sommar och höst.",
+    "autumnValue": "Blommar under sommar och höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 0.75,
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameter": 0.75,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 80,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "vit, dubbel, lätt doftande; blommor i klasar",
+    "foliageCharacter": "blankt ljusgrönt bladverk",
+    "habit": "liten, buskig och rikblommande buskros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/15973/rosa-iceberg/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar under sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/15973/rosa-iceberg/details"
+  },
+  {
+    "id": "pr010",
+    "name": "Klätterros 'Climbing Iceberg'",
+    "latin": "Rosa 'Climbing Iceberg'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Vit, dubbel, lätt doftande; stora klasar; Blommar rikligt under sommar och höst.",
+    "autumnValue": "Blommar rikligt under sommar och höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 3.0,
+    "heightRange": [
+      2.5,
+      4
+    ],
+    "diameter": 3.0,
+    "diameterRange": [
+      2.5,
+      4
+    ],
+    "spacing": 300,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "vit, dubbel, lätt doftande; stora klasar",
+    "foliageCharacter": "blankt ljusgrönt bladverk",
+    "habit": "storväxande klätterros med nästan tagglösa stjälkar",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/87545/rosa-climbing-iceberg-clf/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar rikligt under sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras."
+  },
+  {
+    "id": "pr011",
+    "name": "Ros 'The Fairy'",
+    "latin": "Rosa 'The Fairy'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Klart rosa, små, tätt fyllda rosettformade blommor; Återblommar från sommar in på hösten.",
+    "autumnValue": "Återblommar från sommar in på hösten.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "kalk-, ler-, mull- eller sandjord"
+    ],
+    "height": 0.6,
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameter": 0.9,
+    "diameterRange": [
+      0.5,
+      1
+    ],
+    "spacing": 90,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "klart rosa, små, tätt fyllda rosettformade blommor",
+    "foliageCharacter": "rikligt, prydligt, blankt mörkgrönt bladverk",
+    "habit": "låg, kompakt men utbredd polyantharos",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/84140/rosa-the-fairy-poly/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar från sommar in på hösten. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras."
+  },
+  {
+    "id": "pr012",
+    "name": "Marktäckande ros 'Flower Carpet Pink'",
+    "latin": "Rosa 'Noatraum'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Klart rosa, halvfylld i stora klasar; Blommar rikligt längs skotten under sommar och höst.",
+    "autumnValue": "Blommar rikligt längs skotten under sommar och höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "fertil",
+      "humusrik"
+    ],
+    "height": 0.75,
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameter": 1.25,
+    "diameterRange": [
+      1,
+      1.5
+    ],
+    "spacing": 120,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "klart rosa, halvfylld i stora klasar",
+    "foliageCharacter": "blankt, friskt, halvstädsegrönt bladverk",
+    "habit": "låg, utbredd marktäckande ros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "matrix",
+      "repeated_drift"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/191064/rosa-flower-carpet-pink/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar rikligt längs skotten under sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/191064/rosa-flower-carpet-pink/details"
+  },
+  {
+    "id": "pr013",
+    "name": "Rugosaros 'Hansa'",
+    "latin": "Rosa 'Hansa'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur. Sortprofilen dokumenterar nypon efter blomningen, men anger inte hur länge de sitter kvar.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Djup rosa-lila, stor, fylld och doftande; Blommar sommar och höst",
+    "autumnValue": "Blommar sommar och höst; följs av röda nypon.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktig men väldränerad",
+      "kalk-, ler-, mull- eller sandjord",
+      "tål utsatt läge"
+    ],
+    "height": 1.5,
+    "heightRange": [
+      1,
+      1.5
+    ],
+    "diameter": 1.5,
+    "diameterRange": [
+      1,
+      1.5
+    ],
+    "spacing": 150,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–sep",
+    "color": "#b98291",
+    "flowerColor": "djup rosa-lila, stor, fylld och doftande",
+    "foliageCharacter": "mörkgröna blad; taggiga stjälkar",
+    "habit": "suckrande, lövfällande rugosaros; får scharlakansröda nypon",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/95735/rosa-hansa-ru/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar sommar och höst; följs av röda nypon. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "spreadRisk": "medium",
+    "spreadRiskSource": "https://www.rhs.org.uk/plants/95735/rosa-hansa-ru/details",
+    "spreadRiskNote": "RHS beskriver sorten som mycket kraftig/vigorous och anger en stor maximal utbredning; riskvärdet avser platsbehov, inte invasivitet."
+  },
+  {
+    "id": "pr014",
+    "name": "Rugosaros 'Fru Dagmar Hastrup'",
+    "latin": "Rosa 'Fru Dagmar Hastrup'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur. Sortprofilen dokumenterar nypon efter blomningen, men anger inte hur länge de sitter kvar.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Blekt rosrosa, enkel och doftande med ljusa ståndare; Blommar sommar och höst",
+    "autumnValue": "Blommar sommar och höst; följs av stora röda nypon.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktig men väldränerad",
+      "kalk-, ler-, mull- eller sandjord",
+      "tål kustläge"
+    ],
+    "height": 0.9,
+    "heightRange": [
+      0.5,
+      1
+    ],
+    "diameter": 1.2,
+    "diameterRange": [
+      1,
+      1.5
+    ],
+    "spacing": 120,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–sep",
+    "color": "#b98291",
+    "flowerColor": "blekt rosrosa, enkel och doftande med ljusa ståndare",
+    "foliageCharacter": "friskt mörkgrönt bladverk",
+    "habit": "buskig, utbredd rugosaros; får stora röda nypon",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/96241/rosa-fru-dagmar-hastrup-ru/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar sommar och höst; följs av stora röda nypon. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H7",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/96241/rosa-fru-dagmar-hastrup-ru/details"
+  },
+  {
+    "id": "pr015",
+    "name": "Rugosaros 'Roseraie de l’Haÿ'",
+    "latin": "Rosa 'Roseraie de l'Haÿ'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Purpurröd, halvfylld, stor och mycket doftande med ljusa ståndare; Återblommar sommar och höst",
+    "autumnValue": "Återblommar sommar och höst; lövverket gulnar på hösten.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "tål sämre jord och kustläge"
+    ],
+    "height": 1.8,
+    "heightRange": [
+      1.5,
+      2.5
+    ],
+    "diameter": 1.25,
+    "diameterRange": [
+      1,
+      1.5
+    ],
+    "spacing": 125,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "purpurröd, halvfylld, stor och mycket doftande med ljusa ståndare",
+    "foliageCharacter": "blankt, veckat grönt bladverk som gulnar på hösten",
+    "habit": "kraftig buskros av rugosatyp",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "sculptural",
+      "feature"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/72211/rosa-roseraie-de-lhay-ru/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar sommar och höst; lövverket gulnar på hösten. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H7",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/72211/rosa-roseraie-de-lhay-ru/details"
+  },
+  {
+    "id": "pr016",
+    "name": "Klätterros 'Zéphirine Drouhin'",
+    "latin": "Rosa 'Zéphirine Drouhin'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Ceriserosa, halvfylld och starkt doftande; Blommar nästan kontinuerligt under en lång period sommar och höst.",
+    "autumnValue": "Blommar nästan kontinuerligt under en lång period sommar och höst.",
+    "siteCompatibility": [
+      "full sol",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "tål lätt skugga och norrvägg"
+    ],
+    "height": 3.0,
+    "heightRange": [
+      2.5,
+      4
+    ],
+    "diameter": 2.0,
+    "diameterRange": [
+      1.5,
+      2.5
+    ],
+    "spacing": 200,
+    "light": "Full sol",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "ceriserosa, halvfylld och starkt doftande",
+    "foliageCharacter": "bladverk enligt sortprofil; nästan tagglösa skott",
+    "habit": "kraftig, nästan tagglös Bourbon-klätterros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/90035/rosa-z%C3%A9phirine-drouhin-bb/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Blommar nästan kontinuerligt under en lång period sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/90035/rosa-z%C3%A9phirine-drouhin-bb/details"
+  },
+  {
+    "id": "pr017",
+    "name": "Klätterros 'Madame Alfred Carrière'",
+    "latin": "Rosa 'Madame Alfred Carrière'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Gräddvit med blushrosa ton, fylld och mycket doftande; Nästan kontinuerlig blomning sommar och höst.",
+    "autumnValue": "Nästan kontinuerlig blomning sommar och höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "tål skugga och norrvägg"
+    ],
+    "height": 5.0,
+    "heightRange": [
+      4,
+      8
+    ],
+    "diameter": 3.25,
+    "diameterRange": [
+      2.5,
+      4
+    ],
+    "spacing": 325,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "gräddvit med blushrosa ton, fylld och mycket doftande",
+    "foliageCharacter": "rikligt, ljust grönt bladverk; nästan tagglösa, böjliga skott",
+    "habit": "kraftig Noisette-klätterros",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/99741/rosa-madame-alfred-carri%C3%A8re-n/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Nästan kontinuerlig blomning sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H5",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/99741/rosa-madame-alfred-carri%C3%A8re-n/details"
+  },
+  {
+    "id": "pr018",
+    "name": "Ros 'Ghislaine de Féligonde'",
+    "latin": "Rosa 'Ghislaine de Féligonde'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Aprikos med gul bas, bleknar mot nästan vitt; höstblommor rosa; Återblommar sommar och höst",
+    "autumnValue": "Återblommar sommar och höst; blommorna får rosa ton på hösten.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "tål norrvägg"
+    ],
+    "height": 2.75,
+    "heightRange": [
+      2.5,
+      4
+    ],
+    "diameter": 2.0,
+    "diameterRange": [
+      1.5,
+      2.5
+    ],
+    "spacing": 200,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "aprikos med gul bas, bleknar mot nästan vitt; höstblommor rosa",
+    "foliageCharacter": "blankt, mellangrönt bladverk; nästan tagglösa skott",
+    "habit": "stor buske eller mindre klätterros, bågbildande",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/49168/rosa-ghislaine-de-f%C3%A9ligonde-hm/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar sommar och höst; blommorna får rosa ton på hösten. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H5",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/49168/rosa-ghislaine-de-f%C3%A9ligonde-hm/details"
+  },
+  {
+    "id": "pr019",
+    "name": "Klätterros 'Constance Spry'",
+    "latin": "Rosa 'Constance Spry'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Rosa, rundad och tätt fylld, cirka 12 cm; stark myrradoft; En blomningsomgång mitt i sommaren",
+    "autumnValue": "En blomningsomgång mitt i sommaren; blomningen upprepas inte.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 6.0,
+    "heightRange": [
+      4,
+      8
+    ],
+    "diameter": 2.0,
+    "diameterRange": [
+      1.5,
+      2.5
+    ],
+    "spacing": 200,
+    "light": "Sol–halvskugga",
+    "bloom": "Jul",
+    "color": "#b98291",
+    "flowerColor": "rosa, rundad och tätt fylld, cirka 12 cm; stark myrradoft",
+    "foliageCharacter": "grågrönt bladverk",
+    "habit": "stor klätterros; blommar en gång",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/225104/rosa-constance-spry-cls/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. En blomningsomgång mitt i sommaren; blomningen upprepas inte. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H3",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/225104/rosa-constance-spry-cls/details"
+  },
+  {
+    "id": "pr020",
+    "name": "Klätterros 'The Generous Gardener'",
+    "latin": "Rosa 'Ausdrawn'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Blekrosa, halvfylld, starkt doftande; vattenliljelik form; Återblommar från midsommar till höst.",
+    "autumnValue": "Återblommar från midsommar till höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "måttligt fuktig",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 4.5,
+    "heightRange": [
+      4,
+      8
+    ],
+    "diameter": 3.25,
+    "diameterRange": [
+      2.5,
+      4
+    ],
+    "spacing": 325,
+    "light": "Sol–halvskugga",
+    "bloom": "Jul–okt",
+    "color": "#b98291",
+    "flowerColor": "blekrosa, halvfylld, starkt doftande; vattenliljelik form",
+    "foliageCharacter": "blankt grönt bladverk",
+    "habit": "klätterros för vägg, staket, båge eller pergola",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/196207/rosa-the-generous-gardener-ausdrawn-cl/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar från midsommar till höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras."
+  },
+  {
+    "id": "pr021",
+    "name": "Ramblerros 'Rambling Rector'",
+    "latin": "Rosa 'Rambling Rector'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur. Sortprofilen dokumenterar nypon efter blomningen, men anger inte hur länge de sitter kvar.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Små, halvfyllda gräddvita blommor med djupt gula ståndare, doftande; En riklig blomningsomgång mitt i sommaren",
+    "autumnValue": "En riklig blomningsomgång mitt i sommaren; följs av små röda nypon.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "tål viss skugga"
+    ],
+    "height": 6.0,
+    "heightRange": [
+      4,
+      8
+    ],
+    "diameter": 6.0,
+    "diameterRange": [
+      4,
+      8
+    ],
+    "spacing": 600,
+    "light": "Sol–halvskugga",
+    "bloom": "Jul",
+    "color": "#b98291",
+    "flowerColor": "små, halvfyllda gräddvita blommor med djupt gula ståndare, doftande",
+    "foliageCharacter": "små, mjukt håriga grågröna blad; taggiga skott",
+    "habit": "mycket kraftig gammaldags rambler; passar stor yta eller etablerat träd",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/96757/rosa-rambling-rector-ra/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. En riklig blomningsomgång mitt i sommaren; följs av små röda nypon. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/96757/rosa-rambling-rector-ra/details",
+    "spreadRisk": "high",
+    "spreadRiskSource": "https://www.rhs.org.uk/plants/96757/rosa-rambling-rector-ra/details",
+    "spreadRiskNote": "RHS beskriver sorten som mycket kraftig/vigorous och anger en stor maximal utbredning; riskvärdet avser platsbehov, inte invasivitet."
+  },
+  {
+    "id": "pr022",
+    "name": "Klätterros 'Red New Dawn'",
+    "latin": "Rosa 'Étendard'",
+    "category": "Rosor",
+    "compositionReview": "granskad_kallor",
+    "winterStructure": "Lövfällande vedartad struktur; RHS beskriver busk-/klätterrosens växtsätt men anger ingen säker vinterpersistens för blommor eller frukt.",
+    "springValue": "Lövutspring från lövfällande vedartade skott; RHS anger lövfällande bladverk.",
+    "summerValue": "Klarröd, fylld och doftande i lösa klasar; Återblommar sommar och höst.",
+    "autumnValue": "Återblommar sommar och höst.",
+    "siteCompatibility": [
+      "sol till halvskugga",
+      "fuktighetshållande",
+      "väldränerad",
+      "humusrik",
+      "fertil"
+    ],
+    "height": 3.0,
+    "heightRange": [
+      2.5,
+      4
+    ],
+    "diameter": 2.0,
+    "diameterRange": [
+      1.5,
+      2.5
+    ],
+    "spacing": 200,
+    "light": "Sol–halvskugga",
+    "bloom": "Jun–okt",
+    "color": "#b98291",
+    "flowerColor": "klarröd, fylld och doftande i lösa klasar",
+    "foliageCharacter": "mörkgrönt bladverk; bågböjda, taggiga skott",
+    "habit": "kraftig klätterros med bågbildande växtsätt",
+    "soilMoisture": "Fuktighetshållande men väldränerad; undvik stående väta och mycket torr jord.",
+    "soilTexture": "Kalk-, ler-, mull- eller sandjord; måttligt bördig till bördig, humusrik och väldränerad jord enligt RHS.",
+    "compositionRole": [
+      "vertical_accent",
+      "sculptural"
+    ],
+    "verifiedSource": "https://www.rhs.org.uk/plants/108656/rosa-red-new-dawn/details",
+    "sourceNote": "RHS sortprofil verifierar namngiven sort, växtsätt, blomfärg, blomningstid, läge och storleksintervall. Återblommar sommar och höst. Storleksvärdena följer RHS-profilens beskrivning och/eller dess höjd- och breddintervall; se direktkällan.",
+    "sourceRegionNote": "RHS-profilens råd och eventuell H-klass avser brittiska odlingsförhållanden. RHS H kan inte räknas om direkt till svensk A–D-klass eller svensk zon. Ingen svensk A–D-klass tilldelad.",
+    "reviewDate": "2026-11-12",
+    "dataConfidence": "kallverifierad_sortprofil",
+    "winteringRating": null,
+    "winteringRatingScope": null,
+    "compositionRoleBasis": "Designroll utifrån den källbelagda sortens storlek och växtsätt; en planeringsheuristik, inte ett botaniskt påstående om vilka växter som bör samplanteras.",
+    "rhsHardiness": "H6",
+    "rhsHardinessSourceUrl": "https://www.rhs.org.uk/plants/108656/rosa-red-new-dawn/details"
   }
 ];
 
@@ -7634,6 +8862,15 @@ function symbolType(cat='',latin='',plant=null){
 }
 function botanicalBloomColor(p){
  const description=String(p?.flowerColor||'').toLowerCase().split(/[;,]/)[0];
+ if(String(p?.category||'')==='Rosor'){
+  if(/svartvinbar|purpurr[oö]d|djup rosa.?lila|m[oö]rk.*purpur|crimson/.test(description))return '#80475e';
+  if(/aprikos|korall|orange|laxrosa/.test(description))return '#cc8058';
+  if(/cerise|klarr[oö]d|bright.?crimson|scharlakansr[oö]d/.test(description))return '#bd4c68';
+  if(/gul/.test(description))return '#c6a143';
+  if(/gr[aä]ddvit.*blush|blushrosa|blek.*rosrosa/.test(description))return '#c98fa0';
+  if(/vit|gr[aä]ddvit|cream|white/.test(description))return '#d2c9b2';
+  if(/rosa|pink/.test(description))return '#bd718b';
+ }
  if(description){
   if(/vinröd|karmosin|blood.?red|mörkt purpur/.test(description))return '#91465e';
   if(/blåviolett|violettblå|violett\/blå|blue.?violet|violet.?blue/.test(description))return '#817daf';
@@ -7928,7 +9165,7 @@ const portraitCache=new Map();
 const TRUSTED_SOURCE_HOSTS=new Set(['www.rhs.org.uk','perenner.se','www.perennagruppen.com','svensktradgard.se','www.lansstyrelsen.se','www.diva-portal.org','powo.science.kew.org','e-katalogroslin.pl']);
 function isTrustedSourceUrl(value){try{const url=new URL(value);return url.protocol==='https:'&&TRUSTED_SOURCE_HOSTS.has(url.hostname)}catch{return false}}
 function plantReviewState(p){
- if(p?.compositionReview==='granskad_kallor'&&isTrustedSourceUrl(p.verifiedSource))return{key:'reviewed',label:'Källgranskad artprofil'};
+ if(p?.compositionReview==='granskad_kallor'&&isTrustedSourceUrl(p.verifiedSource))return{key:'reviewed',label:p.category==='Rosor'?'Källgranskad sortprofil':'Källgranskad artprofil'};
  if(p?.compositionReview==='delvis_granskad')return{key:'partial',label:'Delvis källgranskad'};
  if(p?.compositionReview==='exkluderad_fel_kategori')return{key:'excluded',label:'Exkluderad ur växturval'};return{key:'unreviewed',label:'Ej källgranskad'};
 }
@@ -8025,7 +9262,7 @@ function renderCatalog(){
   const b=document.createElement('button');b.className='plant-item'+(state.selectedPlant?.id===p.id?' active':'');b.draggable=true;b.dataset.plantId=p.id;
   const swatch=document.createElement('i');swatch.className='swatch';swatch.style.background=p.color||'#a5b49a';
   const label=document.createElement('span'),name=document.createElement('strong'),latin=document.createElement('em'),rating=document.createElement('small'),reviewBadge=document.createElement('small'),open=document.createElement('small'),review=plantReviewState(p);
-  name.textContent=p.name;latin.textContent=p.latin;rating.className='plant-rating';rating.textContent=verifiedWinteringRating(p)||'—';rating.title=rating.textContent==='—'?'Svensk övervintringsklass saknar verifierad källa':'Svensk övervintringsklass med separat källhänvisning';reviewBadge.className=`review-badge ${review.key}`;reviewBadge.textContent=review.key==='reviewed'?'Källa ✓':review.key==='partial'?'Delvis':review.key==='excluded'?'Exkluderad':'Granska';reviewBadge.title=review.label;open.className='plant-open';open.textContent='Dra in · porträtt ↗';label.append(name,latin);b.append(swatch,label,reviewBadge,rating,open);
+  name.textContent=p.name;latin.textContent=p.latin;rating.className='plant-rating';rating.textContent=verifiedWinteringRating(p)||'—';rating.title=rating.textContent==='—'?(p.category==='Rosor'?'Ingen svensk perennklass A–D tilldelas rosor; se separat RHS-härdighet i porträttet':'Svensk övervintringsklass saknar verifierad källa'):'Svensk övervintringsklass med separat källhänvisning';reviewBadge.className=`review-badge ${review.key}`;reviewBadge.textContent=review.key==='reviewed'?'Källa ✓':review.key==='partial'?'Delvis':review.key==='excluded'?'Exkluderad':'Granska';reviewBadge.title=review.label;open.className='plant-open';open.textContent='Dra in · porträtt ↗';label.append(name,latin);b.append(swatch,label,reviewBadge,rating,open);
   b.ondragstart=e=>{e.dataTransfer.effectAllowed='copy';e.dataTransfer.setData('text/garden-cells-plant',p.id);e.dataTransfer.setData('text/plain',p.id)};
   b.onclick=()=>{state.selectedPlant=p;renderCatalog();$('status').textContent=`Vald art: ${p.name}`;showPlantPortrait(p)};
   $('plantList').appendChild(b);
