@@ -266,7 +266,7 @@ button:disabled{opacity:.55;cursor:default}
  <section class="garden-3d-window">
   <header class="garden-3d-header"><div><p class="eyebrow">RUMSLIG FÖRHANDSVISNING</p><h2 id="garden3dTitle">Rabattcell i 3D</h2></div><div class="garden-3d-controls"><label>Årstid<select id="garden3dSeason"><option value="5">Maj</option><option value="6" selected>Juni</option><option value="8">Augusti</option><option value="10">Oktober</option><option value="1">Vinter</option></select></label><label>Utveckling<select id="garden3dMaturity"><option value="0.72">Etablering</option><option value="1" selected>Uppvuxen rabatt</option></select></label><button id="garden3dSave" type="button" class="secondary">Spara bild</button><button id="garden3dClose" type="button" class="garden-3d-close" aria-label="Stäng 3D-vyn">×</button></div></header>
   <div class="garden-3d-stage"><canvas id="garden3dCanvas" aria-label="Interaktiv tredimensionell vy av rabattcellen"></canvas><div class="garden-3d-help">Dra för att vrida · scrolla för att zooma · dubbelklicka för att återställa vyn</div><div id="garden3dMessage" class="garden-3d-message hidden"></div></div>
-  <p class="garden-3d-note">Växtformerna är en rumslig uppskattning utifrån artdata och planteringsavstånd. Vrid och zooma för att utforska rabatten.</p>
+  <p class="garden-3d-note">Växtformerna följer artens blad- och blomtyp. Detaljnivån anpassas efter rabattens storlek för att hålla vyn följsam. Vrid och zooma för att utforska rabatten.</p>
  </section>
 </div>
 <script>
@@ -6682,10 +6682,61 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
   if(!positions.length)return null;
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geometry.setIndex(indices);geometry.computeVertexNormals();const mesh=new THREE.Mesh(geometry,material);mesh.receiveShadow=true;return mesh;
  }
- function addInstanced(items,geometry,material){
-  if(!items.length)return null;const mesh=new THREE.InstancedMesh(geometry,material,items.length),dummy=new THREE.Object3D();mesh.castShadow=true;mesh.receiveShadow=true;
-  items.forEach((item,index)=>{dummy.position.set(item.x,item.y,item.z);dummy.rotation.set(item.rx||0,item.ry||0,item.rz||0);dummy.scale.set(item.sx||1,item.sy||1,item.sz||1);dummy.updateMatrix();mesh.setMatrixAt(index,dummy.matrix);mesh.setColorAt(index,new THREE.Color(safeColor(item.color,'#67805a')))});
+ function addInstanced(items,geometry,material,castShadow=false){
+  if(!items.length)return null;const mesh=new THREE.InstancedMesh(geometry,material,items.length),dummy=new THREE.Object3D(),up=new THREE.Vector3(0,1,0);mesh.castShadow=castShadow;mesh.receiveShadow=false;
+  items.forEach((item,index)=>{dummy.position.set(item.x,item.y,item.z);if(item.dir)dummy.quaternion.setFromUnitVectors(up,new THREE.Vector3(item.dir.x,item.dir.y,item.dir.z).normalize());else dummy.rotation.set(item.rx||0,item.ry||0,item.rz||0);dummy.scale.set(item.sx||1,item.sy||1,item.sz||1);dummy.updateMatrix();mesh.setMatrixAt(index,dummy.matrix);mesh.setColorAt(index,new THREE.Color(safeColor(item.color,'#67805a')))});
   mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;root.add(mesh);return mesh;
+ }
+ function makeBladeGeometry(halfWidth=.42,arch=.025){
+  const geometry=new THREE.BufferGeometry(),positions=[],indices=[],rows=6,columns=4;
+  for(let row=0;row<=rows;row++){const t=row/rows,profile=Math.pow(Math.max(0,Math.sin(Math.PI*t)),.72);for(let col=0;col<=columns;col++){const u=col/columns*2-1;positions.push(u*halfWidth*profile,t,arch*Math.sin(Math.PI*t)*(1-Math.abs(u)*.55))}}
+  for(let row=0;row<rows;row++)for(let col=0;col<columns;col++){const a=row*(columns+1)+col,b=a+columns+1;indices.push(a,b,a+1,b,b+1,a+1)}
+  geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();return geometry;
+ }
+ function buildPlants(data,month,growth){
+  const stems=[],leaves=[],petals=[],centers=[],florets=[],winter=month===1,detail=data.groups.length>600?.62:data.groups.length>300?.78:1,maxPlantsPerCell=detail<.7?4:detail<.9?6:7;
+  data.groups.forEach((group,groupIndex)=>{
+   if(!Array.isArray(group.points)||group.points.length<3)return;
+   const rand=randFor(hashText(`${group.plantId||group.name}:${groupIndex}:${group.center?.x||0}:${group.center?.y||0}`));
+   const motif=String(group.motif||'').toLowerCase(),symbol=String(group.symbol||'').toLowerCase(),habit=String(group.habit||'').toLowerCase();
+   const family=symbol==='iris'||motif==='iris'?'iris':/echinacea|coneflower/.test(motif)||symbol==='echinacea'?'cone':/rayflower|daisy|aster|rudbeckia/.test(motif)||['daisy','rudbeckia','anemone','buttercup'].includes(symbol)?'ray':/umbel/.test(motif)||symbol.includes('umbel')?'umbel':/spike|spire|raceme|bottlebrush|bellspike|agastache/.test(motif)||symbol==='spike'?'spike':/grass|feathery|panicle|needle/.test(motif)||/gräs|bågform|vippor/.test(habit)?'grass':/sphere|thistle/.test(motif)||symbol==='sphere'?'globe':/berry/.test(motif)||symbol.includes('berry')?'berry':/rosette|groundcover|succulent/.test(motif)||/rosett|marktäck|tuva/.test(habit)?'rosette':'cluster';
+   const isGrass=family==='grass',isRosette=['rosette','iris'].includes(family),flowering=isBlooming(group.bloom,month),height=clamp(Number(group.height)||.72,.18,2.5)*growth,spacing=clamp(Number(group.spacing)||.4,.2,1.2),area=Math.max(.06,Number(group.area)||.4),count=clamp(Math.round(Number(group.estimatedPlants)||area/Math.pow(spacing,2)),1,maxPlantsPerCell),foliage=seasonalColor(group.foliageColor,month,winter),accent=flowering?safeColor(group.flowerColor,'#ba7692'):winter?'#897c5d':seasonalColor(group.foliageColor,month,false),center=group.center||null;
+   for(let i=0;i<count;i++){
+    const point=plantPoint(group.points,center,rand,i,data.paths||[]);if(!point)continue;
+     const baseX=point.x,baseZ=point.y,stemCount=isGrass?3:['umbel','cluster'].includes(family)?2:1,localHeight=height*(.76+rand()*.34),leafCount=winter?1:isRosette?6:Math.max(3,Math.round((isGrass?5:5)*detail));
+    for(let stem=0;stem<stemCount;stem++){
+     const angle=rand()*Math.PI*2,spread=i===0&&stem===0?0:spacing*(isRosette?.09:.12),x=baseX+Math.cos(angle)*spread,z=baseZ+Math.sin(angle)*spread,h=localHeight*(.82+rand()*.24),lean=(rand()-.5)*.12;
+     stems.push({x,y:groundY+h*.43,z,sy:h*.86,sx:.011,sz:.011,rx:lean*Math.sin(angle),rz:lean*Math.cos(angle),color:winter?'#70674d':'#526b43'});
+     for(let leaf=0;leaf<leafCount;leaf++){
+      const a=rand()*Math.PI*2,level=family==='iris'?.1+rand()*.12:isRosette?.12+rand()*.18:.1+rand()*.36,length=family==='iris'?h*(.6+rand()*.18):family==='grass'?h*(.45+rand()*.28):spacing*(isRosette?.55:.4),tilt=family==='iris'?.12+rand()*.18:isRosette?.77+rand()*.15:.5+rand()*.35,dir={x:Math.cos(a)*tilt,y:Math.sqrt(Math.max(.05,1-tilt*tilt)),z:Math.sin(a)*tilt};
+      leaves.push({x:x+dir.x*length*.12,y:groundY+h*level,z:z+dir.z*length*.12,dir,sx:family==='iris'?.06:family==='grass'?.026:isRosette?.105:.065,sy:length,sz:.035,color:foliage});
+     }
+     const top=groundY+h*(.85+rand()*.08);
+     if(flowering){
+      if(family==='ray'||family==='cone'){
+       const petalCount=Math.max(7,Math.round((family==='cone'?13:11)*detail)),petalLength=family==='cone'?.16:.13;
+       for(let p=0;p<petalCount;p++){const a=p*Math.PI*2/petalCount,dir={x:Math.cos(a),y:(rand()-.5)*.12,z:Math.sin(a)};petals.push({x:x+dir.x*.026,y:top,z:z+dir.z*.026,dir,sx:.048,sy:petalLength*(.85+rand()*.25),sz:.018,color:accent})}
+       centers.push({x,y:top,z,sx:family==='cone'?.06:.04,sy:family==='cone'?.085:.034,sz:family==='cone'?.06:.04,color:family==='cone'?'#927546':'#d0aa4e'});
+      }else if(family==='iris'){
+       for(let p=0;p<6;p++){const a=p*Math.PI/3,dir={x:Math.cos(a)*.72,y:p<3?.48:-.48,z:Math.sin(a)*.72};petals.push({x:x+dir.x*.035,y:top,z:z+dir.z*.035,dir,sx:.105,sy:p<3?.18:.22,sz:.027,color:accent})}
+       centers.push({x,y:top,z,sx:.04,sy:.045,sz:.04,color:'#d5bd67'});
+      }else if(['umbel','globe','berry','cluster'].includes(family)){
+       const floretsCount=Math.max(5,Math.round((family==='globe'?14:family==='umbel'?10:family==='berry'?7:8)*detail)),radius=family==='globe'?.11:family==='umbel'?.085:.07;
+       for(let f=0;f<floretsCount;f++){const a=f*2.399,ring=radius*Math.sqrt((f+.5)/floretsCount),y=top+radius*(.45-(f%3)*.16),size=family==='berry'?.033:.025;florets.push({x:x+Math.cos(a)*ring,y,z:z+Math.sin(a)*ring,sx:size,sy:size*(family==='berry'?1.15:.9),sz:size,color:accent})}
+      }else if(family==='spike'||family==='grass'){
+       for(let f=0;f<Math.max(5,Math.round(8*detail));f++){const a=f*2.4,level=.62+f*.045,radius=family==='grass'?.025:.035;florets.push({x:x+Math.cos(a)*radius,y:groundY+h*level,z:z+Math.sin(a)*radius,sx:.024,sy:.035,sz:.024,color:accent})}
+      }
+     }else if(winter&&/hög|medel|fröställ|upprätt|arkitektonisk/i.test(group.winterStructure||'')){
+      for(let f=0;f<4;f++){const a=f*2.4,r=.045+rand()*.025;florets.push({x:x+Math.cos(a)*r,y:top+(rand()-.5)*.08,z:z+Math.sin(a)*r,sx:.023,sy:.032,sz:.023,color:'#887553'})}
+     }
+    }
+   }
+  });
+  if(stems.length)addInstanced(stems,new THREE.CylinderGeometry(.55,.9,1,6,1),new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.9}),true);
+  if(leaves.length)addInstanced(leaves,makeBladeGeometry(.5,.025),new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.78,side:THREE.DoubleSide}));
+  if(petals.length)addInstanced(petals,makeBladeGeometry(.48,.04),new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.68,side:THREE.DoubleSide}));
+  if(centers.length)addInstanced(centers,new THREE.SphereGeometry(1,10,7),new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.78}));
+  if(florets.length)addInstanced(florets,new THREE.SphereGeometry(1,7,5),new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.73}));
  }
  function bloomMonthRange(text){
   const aliases={jan:1,januari:1,feb:2,februari:2,mar:3,mars:3,apr:4,april:4,maj:5,may:5,jun:6,juni:6,jul:7,juli:7,aug:8,augusti:8,sep:9,september:9,okt:10,oct:10,oktober:10,nov:11,november:11,dec:12,december:12};
@@ -8595,7 +8646,7 @@ $('referenceVisible').onchange=e=>{if(state.reference)state.reference.visible=e.
 $('referenceOpacity').oninput=e=>{const opacity=Number(e.target.value)/100;$('referenceOpacityOut').textContent=`${e.target.value} %`;if(state.reference)state.reference.opacity=opacity;render()};
 $('calibrateReference').onclick=()=>{if(state.referenceCalibrationPoints){state.referenceCalibrationPoints=null;$('calibrateReference').textContent='Kalibrera skala';$('status').textContent='Skalkalibrering avbruten';render();return}if(!state.reference?.src){$('status').textContent='Ladda en referensbild först';return}if(!(Number($('calibrationDistance').value)>0)){$('status').textContent='Ange ett känt avstånd i meter först';return}setTool('select');state.referenceCalibrationPoints=[];$('calibrateReference').textContent='Avbryt kalibrering';$('status').textContent='Klicka på första ändpunkten för det angivna avståndet i referensbilden.';render()};
 $('clearReference').onclick=()=>{state.reference=null;state.referenceCalibrationPoints=null;$('calibrateReference').textContent='Kalibrera skala';$('referenceVisible').checked=false;$('status').textContent='Referensbild borttagen';render()};
-$('open3dPreview').onclick=()=>{const bed=state.beds.find(item=>item.id===state.selected);if(!bed){$('status').textContent='Markera en rabattcell först.';return}if(!window.GardenCells3D){$('status').textContent='3D-vyn kunde inte startas.';return}const bedBounds=bounds(bed.points),paths=state.paths.filter(path=>{const b=bounds(path.points);return b.x<=bedBounds.x+bedBounds.w&&b.x+b.w>=bedBounds.x&&b.y<=bedBounds.y+bedBounds.h&&b.y+b.h>=bedBounds.y}).map(path=>({points:path.points,fill:path.fill||'#d8d1bf'})),groups=state.groups.filter(group=>group.bedId===bed.id&&group.poly?.length>=3).map(group=>{const plant=catalogPlant(group.plantId,group),visual=speciesVisualProfile(plant);return{plantId:group.plantId,name:plant.name,latin:plant.latin,category:plant.category,motif:visual.motif,points:group.poly,center:group.center||visualCellCenter(group.poly),area:area(group.poly),estimatedPlants:group.estimatedPlants||1,spacing:Math.max(20,Number(plant.spacing)||38)/100,height:Number(plant.height)||.72,bloom:plant.bloom||'',habit:plant.habit||'',winterStructure:plant.winterStructure||'',foliageColor:visual.foliage,flowerColor:visual.accent,cellColor:visual.inner}});window.GardenCells3D.open({name:bed.formLabel||'Rabattcell',points:bed.points,groups,paths})};
+$('open3dPreview').onclick=()=>{const bed=state.beds.find(item=>item.id===state.selected);if(!bed){$('status').textContent='Markera en rabattcell först.';return}if(!window.GardenCells3D){$('status').textContent='3D-vyn kunde inte startas.';return}const bedBounds=bounds(bed.points),paths=state.paths.filter(path=>{const b=bounds(path.points);return b.x<=bedBounds.x+bedBounds.w&&b.x+b.w>=bedBounds.x&&b.y<=bedBounds.y+bedBounds.h&&b.y+b.h>=bedBounds.y}).map(path=>({points:path.points,fill:path.fill||'#d8d1bf'})),groups=state.groups.filter(group=>group.bedId===bed.id&&group.poly?.length>=3).map(group=>{const plant=catalogPlant(group.plantId,group),visual=speciesVisualProfile(plant);return{plantId:group.plantId,name:plant.name,latin:plant.latin,category:plant.category,motif:visual.motif,symbol:visual.symbol,points:group.poly,center:group.center||visualCellCenter(group.poly),area:area(group.poly),estimatedPlants:group.estimatedPlants||1,spacing:Math.max(20,Number(plant.spacing)||38)/100,height:Number(plant.height)||.72,bloom:plant.bloom||'',habit:plant.habit||'',winterStructure:plant.winterStructure||'',foliageColor:visual.foliage,flowerColor:visual.accent,cellColor:visual.inner}});window.GardenCells3D.open({name:bed.formLabel||'Rabattcell',points:bed.points,groups,paths})};
 $('plantSearch').oninput=renderCatalog;$('categoryFilter').onchange=renderCatalog;$('winteringFilter').onchange=renderCatalog;$('gridToggle').onchange=e=>{state.grid=e.target.checked;render()};$('density').oninput=()=>{$('densityOut').textContent=['Mycket gles','Gles','Lugn','Normal','Tät','Mycket tät'][+$('density').value-1]};$('densityOut').textContent=['Mycket gles','Gles','Lugn','Normal','Tät','Mycket tät'][+$('density').value-1];$('resizeSite').onclick=()=>{state.W=clamp(+$('siteW').value||24,5,1000);state.H=clamp(+$('siteH').value||16,5,1000);render()};$('lockBed').onclick=()=>{const bed=state.beds.find(item=>item.id===state.selected);if(!bed)return;snap();bed.locked=!bed.locked;render();$('status').textContent=bed.locked?'Rabattcellen är låst. Den påverkas inte när andra rabatter eller växtgrupper genereras.':'Rabattcellen är upplåst.'};$('saveBedForm').onclick=saveSelectedBedAsForm;$('rotateBedLeft').onclick=()=>rotateSelectedBed(-15);$('rotateBedRight').onclick=()=>rotateSelectedBed(15);$('rotateBedGroupLeft').onclick=()=>rotateSelectedBeds(-15);$('rotateBedGroupRight').onclick=()=>rotateSelectedBeds(15);$('placeBedCopy').onclick=beginBedCopyPlacement;$('cancelBedPlacement').onclick=cancelBedCopyPlacement;$('copyGroup').onclick=beginPlantCopyPlacement;$('cancelPlantCopyPlacement').onclick=cancelPlantCopyPlacement;$('deleteBed').onclick=deleteSelectedBed;$('selectOwningBed').onclick=()=>{const group=state.groups.find(item=>item.id===state.selected);if(group?.bedId)setRenderedSelection(group.bedId)};
 $('makeSite').onclick=()=>{
  const append=$('appendGeneratedBeds').checked&&state.beds.length>0;
