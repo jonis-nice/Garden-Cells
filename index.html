@@ -8276,8 +8276,8 @@ $('generateBtn').onclick=()=>{
  generationBeds.forEach((bed,bi)=>{
   const bedArea=cachedArea(bed.points);
   if(bedArea<.5){failures.push('En planteringsyta är för liten');return}
-  const densityLevel=+$('density').value||4,densityRates=[.55,.78,1.05,1.42,1.9,2.4],maxReadableCells=Math.max(1,Math.floor(bedArea/.42));
-  const baseSeedCount=Math.min(125,maxReadableCells,Math.max(1,Math.round(bedArea*densityRates[clamp(densityLevel,1,6)-1])));
+  const densityLevel=+$('density').value||4,densityIndex=clamp(densityLevel,1,6)-1,densityRates=[.55,.78,1.05,1.42,1.9,2.4],densityCaps=[125,250,400,550,750,1000],maxReadableCells=Math.max(1,Math.floor(bedArea/.42));
+  const baseSeedCount=Math.min(densityCaps[densityIndex],maxReadableCells,Math.max(1,Math.round(bedArea*densityRates[densityIndex])));
   const speciesChoice=$('speciesCount').value,autoSpecies=clamp(Math.round(bedArea/3.5),4,10);
   const requestedSpecies=speciesChoice==='auto'?autoSpecies:clamp(+speciesChoice||autoSpecies,2,12);
   const desiredSpecies=Math.min(maxReadableCells,Math.max(requestedSpecies,Math.min(4,maxReadableCells)));
@@ -8366,7 +8366,7 @@ $('generateBtn').onclick=()=>{
    if(cell.length>=3){let extent=0;for(const v of cell)extent=Math.max(extent,Math.hypot(v.x-z.x,v.y-z.y));visitRadius(extent+Math.sqrt(extent*extent+maxWeight-minWeight)+.002)}
    return cell;
   });
-  const cellAreas=cells.map(cell=>cell.length>=3?area(cell):0),minimumCellArea=Math.min(.22,bedArea/seedCount*.42),viableIndices=[];
+  const cellAreas=cells.map(cell=>cell.length>=3?area(cell):0),densityBlend=densityIndex/5,minimumCellArea=Math.max(.08,Math.min(.22,bedArea/seedCount*(.42-.22*densityBlend))),viableIndices=[];
   cells.forEach((cell,zi)=>{if(cellAreas[zi]>=minimumCellArea)viableIndices.push(zi)});
   if(viableIndices.length>=palette.length){
    const counts=new Map();viableIndices.forEach(i=>counts.set(assigned[i].id,(counts.get(assigned[i].id)||0)+1));
@@ -8390,8 +8390,8 @@ $('generateBtn').onclick=()=>{
    const species=assigned[zi],visual=speciesVisualProfile(species),motif=visual.motif;
    const linearGrowth=['grass','feathery','panicle','spike','agastacheSpike','spire','bellspike','bottlebrush','raceme','needle','arch'].includes(motif);
    const rosetteGrowth=['rosette','rosetteflower','succulent','groundcover','iris','leaf','maple','alchemilla','berry','berrycluster'].includes(motif);
-   const rawCenter=visualCellCenter(cell),inset=linearGrowth?.74+rand()*.06:rosetteGrowth?.81+rand()*.07:.82+rand()*.105;
-   const shapeAxis=linearGrowth?rand()*Math.PI:0,alongScale=linearGrowth?1.18:rosetteGrowth?1.06:1.035,acrossScale=linearGrowth?.82:rosetteGrowth?.94:.97;
+   const rawCenter=visualCellCenter(cell),cellSize=Math.sqrt(cellAreas[zi]),targetGap=[.15,.12,.09,.065,.045,.025][densityIndex],inset=clamp(1-targetGap/Math.max(.05,cellSize),.82,.985);
+   const shapeAxis=linearGrowth?rand()*Math.PI:0,alongScale=linearGrowth?1.08-densityBlend*.08:rosetteGrowth?1.035:1.015,acrossScale=linearGrowth?.89+densityBlend*.09:rosetteGrowth?.97:.985;
    const insetCell=cell.map(v=>{const dx=v.x-rawCenter.x,dy=v.y-rawCenter.y,along=dx*Math.cos(shapeAxis)+dy*Math.sin(shapeAxis),across=-dx*Math.sin(shapeAxis)+dy*Math.cos(shapeAxis);return{x:rawCenter.x+(along*alongScale*Math.cos(shapeAxis)-across*acrossScale*Math.sin(shapeAxis))*inset,y:rawCenter.y+(along*alongScale*Math.sin(shapeAxis)+across*acrossScale*Math.cos(shapeAxis))*inset}});
    const morphPhase=rand()*Math.PI*2,morphPhase2=rand()*Math.PI*2,morphPhase3=rand()*Math.PI*2,morphCenter=visualCellCenter(insetCell),morphLobes=linearGrowth?5+Math.floor(rand()*3):rosetteGrowth?5+Math.floor(rand()*3):3+Math.floor(rand()*3);
    const sculpted=insetCell.map(v=>{
@@ -8401,7 +8401,7 @@ $('generateBtn').onclick=()=>{
     const f=clamp(1+edgeWave+directional,.94,1.035);
     return{x:morphCenter.x+dx*f,y:morphCenter.y+dy*f};
    });
-   const poly=fitPolygonInside(smoothClosed(sculpted,2+(rand()<.34?1:0)),rawCenter,pointInBed);
+   const pointInCell=preparePointInPolygon(cell,bounds(cell)),poly=fitPolygonInside(smoothClosed(sculpted,2+(rand()<.34?1:0)),rawCenter,pointInCell);
    const role=window.PLANT_AESTHETICS?.rolePlacement(species,compositionMode)||'följeväxt';
    const center=visualCellCenter(poly),spacing=Math.max(20,Math.min(80,Number(species.spacing)||38));
    const estimatedPlants=Math.max(1,Math.round(cellAreas[zi]/(.8660254*Math.pow(spacing/100,2))));
