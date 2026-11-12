@@ -7701,7 +7701,6 @@ function renderNow(){
  const bedClipIds=new Map();
  state.beds.forEach(b=>{const clipId=`bed-clip-${b.id}`,clip=E('clipPath',{id:clipId,clipPathUnits:'userSpaceOnUse'},dynamicDefs);E('path',{d:bedGeometryPath(b)},clip);bedClipIds.set(b.id,clipId)});
  state.beds.forEach(b=>{const path=bedGeometryPath(b);E('path',{d:path,fill:'#f4f0e7','fill-opacity':.42,stroke:'#9e9b8e','stroke-width':1.5,'stroke-linejoin':'round','pointer-events':'all','data-id':b.id,'data-kind':'bed'})});
- state.paths.forEach(p=>{const d=polygonPath(p.points),selected=state.selected===p.id;E('path',{d,fill:p.fill||'#fff','fill-opacity':p.opacity??1,stroke:'none','pointer-events':'none','data-id':p.id,'data-role':'path-fill'});E('path',{d,fill:'none',stroke:selected?'#557452':(p.stroke||'#bcb8ac'),'stroke-width':selected?2.8:(p.strokeWidth||1.4),'stroke-linejoin':'round','stroke-dasharray':selected?'6 3':'none','pointer-events':'none','data-id':p.id,'data-role':'path-outline'});E('path',{d,fill:'transparent',stroke:'transparent','stroke-width':Math.max(2,24/state.zoom),'pointer-events':'all','data-id':p.id,'data-kind':'path',title:p.name||'Välj gången'})});
  state.groups.forEach((gr,gi)=>{
   const gid='mass-'+gr.id,massPath=sharedMassPath(gr.poly),groupSelected=state.selected===gr.id||state.selectedGroupIds?.includes(gr.id),showGlyph=gr.standalone||state.zoom>=symbolDetailZoom()||state.selected===gr.id;
   const lowDetail=state.zoom<symbolDetailZoom()&&!showGlyph;
@@ -7723,6 +7722,8 @@ function renderNow(){
   }
  });
  groupLabelLayer=E('g',{'data-render-layer':'labels'},sceneLayer);updateGroupLabels(true);
+ const walkwayLayer=E('g',{'data-render-layer':'walkways'},sceneLayer);
+ state.paths.forEach(p=>{const d=polygonPath(p.points),selected=state.selected===p.id;E('path',{d,fill:p.fill||'#fff','fill-opacity':p.opacity??1,stroke:'none','pointer-events':'none','data-id':p.id,'data-role':'path-fill'},walkwayLayer);E('path',{d,fill:'none',stroke:selected?'#557452':(p.stroke||'#bcb8ac'),'stroke-width':selected?2.8:(p.strokeWidth||1.4),'stroke-linejoin':'round','stroke-dasharray':selected?'6 3':'none','pointer-events':'none','data-id':p.id,'data-role':'path-outline'},walkwayLayer);E('path',{d,fill:'transparent',stroke:'transparent','stroke-width':Math.max(2,24/state.zoom),'pointer-events':'all','data-id':p.id,'data-kind':'path',title:p.name||'Välj gången'},walkwayLayer)});
  state.beds.forEach(b=>{const d=bedGeometryPath(b),selected=state.selected===b.id||state.selectedBedIds?.includes(b.id);E('path',{d,fill:'none',stroke:'transparent','stroke-width':Math.max(2,24/state.zoom),'stroke-linejoin':'round','pointer-events':'stroke','data-id':b.id,'data-kind':'bed',title:'Välj rabattcellen'});E('path',{d,fill:'none',stroke:selected?'#557452':'#a9a69a','stroke-width':selected?3.2:1.35,'stroke-dasharray':selected?'6 3':'none','stroke-linejoin':'round','pointer-events':'none','data-role':'bed-outline','data-id':b.id})});
 
 
